@@ -17,7 +17,7 @@ const Header = () => {
           Question Bank
         </a>
       </div>
-      <div
+      {/* <div
         className={`hamburger ${isMenuOpen ? "open" : ""}`}
         onClick={toggleMenu}>
         <span className="bar"></span>
@@ -30,7 +30,7 @@ const Header = () => {
           <li><a href="/services">Services</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
-      </nav>
+      </nav> */}
     </header>
   );
 };

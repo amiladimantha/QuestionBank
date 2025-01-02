@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Table,
   TableBody,
@@ -8,6 +8,7 @@ import {
   TableRow,
   Paper,
   Button,
+  TextField,
 } from '@mui/material';
 
 const TableComponent = () => {
@@ -29,6 +30,19 @@ const TableComponent = () => {
     },
   ];
 
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value.toLowerCase());
+  };
+
+  const filteredRows = rows.filter(
+    (row) =>
+      row.question.toLowerCase().includes(searchQuery) ||
+      row.category.toLowerCase().includes(searchQuery) ||
+      row.answer.toLowerCase().includes(searchQuery)
+  );
+
   const handleEdit = (index) => {
     console.log("Edit row:", index);
   }
@@ -38,6 +52,16 @@ const TableComponent = () => {
   }
 
   return(
+    <div>
+      <TextField
+        label="Search"
+        variant='outlined'
+        fullWidth
+        margin='normal'
+        value={searchQuery}
+        onChange={handleSearchChange}
+      />
+
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
@@ -78,6 +102,7 @@ const TableComponent = () => {
         </TableBody>
       </Table>
     </TableContainer>
+    </div>
   );
 };
 
