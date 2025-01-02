@@ -3,12 +3,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #282c34;
+  background-color: #000000;
   color: white;
 }
 
 .logo a {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   color: #61dafb;
   text-decoration: none;
@@ -20,6 +21,10 @@
   height: 40px;
   margin-right: 10px;
   border-radius: 10px;
+}
+
+.nav{
+  display: flex;
 }
 
 .nav ul {
@@ -37,4 +42,69 @@
 
 .nav a:hover {
   text-decoration: underline;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+  transition: all 0.3s ease;
+}
+
+.hamburger .bar {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/*Responsive Design start*/
+@media (max-width: 768px){
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust to be below the header */
+    right: 20px;
+    background-color: #000000;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    padding: 10px;
+    width: 80%;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav ul{
+    flex-direction: column; /* Stack navigation links vertically */
+    gap: 10px; /* Reduce gap for vertical layout */
+    width: 100%; /* take full width */
+    align-items: center; /*Align items to the left */
+  }
+
+  .nav a {
+    font-size: 18px;
+  }
+
+  /* Transform bars when menu is open */
+  .hamburger.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.open .bar:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+  }
+
+  .hamburger.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
 }
